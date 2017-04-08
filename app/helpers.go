@@ -2,14 +2,15 @@ package app
 
 import (
 	"fmt"
-	. "github.com/huacnlee/mediom/app/models"
-	"github.com/huacnlee/timeago"
-	"github.com/revel/revel"
 	"html/template"
 	"math/rand"
 	"reflect"
 	"strings"
 	"time"
+
+	"github.com/huacnlee/timeago"
+	. "github.com/lzyzsd/mediom/app/models"
+	"github.com/revel/revel"
 )
 
 var (
@@ -23,7 +24,7 @@ var (
 	}
 )
 
-func init() {
+func initHelpers() {
 	revel.TemplateFuncs["plus"] = func(a, b int) int {
 		return a + b
 	}

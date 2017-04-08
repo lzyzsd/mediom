@@ -1,8 +1,6 @@
 package app
 
 import (
-	"strings"
-
 	"github.com/huacnlee/train"
 	"github.com/lzyzsd/mediom/app/models"
 	"github.com/revel/revel"
@@ -25,35 +23,12 @@ func init() {
 		revel.ActionInvoker,           // Invoke the action.
 	}
 
-	// train.Config.AssetsPath = "app/assets"
-	// if !revel.DevMode {
-	// 	train.Config.AssetsPath = "src/github.com/lzyzsd/mediom/app/assets"
-	// }
-	// train.Config.SASS.DebugInfo = false
-	// train.Config.SASS.LineNumbers = false
-	// train.Config.Verbose = false
-	// train.Config.BundleAssets = true
-
-	// csrf.ExemptedGlob("/msg")
-
 	revel.OnAppStart(func() {
 		models.InitDatabase()
+		initHelpers()
 		initAdmin()
-
-		// if revel.DevMode {
-		// 	train.ConfigureHttpHandler(nil)
-		// 	revel.Filters = append([]revel.Filter{AssetsFilter}, revel.Filters...)
-		// }
 	})
 
 	revel.TemplateFuncs["javascript_include_tag"] = train.JavascriptTag
 	revel.TemplateFuncs["stylesheet_link_tag"] = train.StylesheetTag
-}
-
-var AssetsFilter = func(c *revel.Controller, fc []revel.Filter) {
-	if strings.HasPrefix(c.Request.URL.Path, "/assets") {
-		train.ServeRequest(c.Response.Out, c.Request.Request)
-	} else {
-		fc[0](c, fc[1:])
-	}
 }
