@@ -2,15 +2,16 @@ package app
 
 import (
 	"fmt"
-	"github.com/huacnlee/mediom/app/models"
+	"net/http"
+	"strings"
+
+	"github.com/lzyzsd/mediom/app/models"
 	"github.com/qor/admin"
 	"github.com/qor/publish"
 	"github.com/qor/qor"
 	"github.com/qor/sorting"
 	"github.com/qor/validations"
 	"github.com/revel/revel"
-	"net/http"
-	"strings"
 )
 
 var Admin *admin.Admin

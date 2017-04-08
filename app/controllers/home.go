@@ -2,7 +2,8 @@ package controllers
 
 import (
 	"fmt"
-	. "github.com/huacnlee/mediom/app/models"
+
+	. "github.com/lzyzsd/mediom/app/models"
 	"github.com/revel/revel"
 	"golang.org/x/net/websocket"
 )

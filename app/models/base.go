@@ -1,12 +1,14 @@
 package models
 
 import (
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
-	"github.com/revel/revel"
+	"fmt"
 	"log"
 	"os"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/jinzhu/gorm"
+	"github.com/revel/revel"
 )
 
 var db *gorm.DB
@@ -33,6 +35,8 @@ func (m BaseModel) IsDeleted() bool {
 func InitDatabase() {
 	adapter := revel.Config.StringDefault("gorm.adapter", "mysql")
 	databaseURI := revel.Config.StringDefault("gorm.database_uri", "")
+	fmt.Println("-----------------")
+	fmt.Println("------------------------" + databaseURI)
 	var err error
 	db, err = gorm.Open(adapter, databaseURI)
 	DB = db

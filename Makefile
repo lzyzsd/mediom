@@ -1,11 +1,11 @@
 install:
-	@npm install -g node-sass@3.3.2
+	@npm install -g node-sass
 	@npm install -g coffee-script@1.6.2
 	@go get github.com/huacnlee/train
 	@go build -o $GOPATH/bin/train github.com/huacnlee/train/cmd
 	@cd app; go get
 server:
-	revel run github.com/huacnlee/mediom
+	revel run github.com/lzyzsd/mediom
 release:
 	@make assets
 	GOOS=linux GOARCH=amd64 revel package github.com/huacnlee/mediom prod

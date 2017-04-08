@@ -44,5 +44,6 @@ GET     /:login             Users.Show
 GET     /:login/topics      Users.Topics
 
 
-
+GET    /assets/*filepath            Static.Serve("public")
+GET    /favicon.ico                 Static.Serve("public","favicon.png")
 

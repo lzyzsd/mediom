@@ -1,9 +1,10 @@
 package controllers
 
 import (
-	. "github.com/huacnlee/mediom/app/models"
-	"github.com/revel/revel"
 	"regexp"
+
+	. "github.com/lzyzsd/mediom/app/models"
+	"github.com/revel/revel"
 )
 
 type Accounts struct {

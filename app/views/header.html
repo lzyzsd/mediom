@@ -4,13 +4,25 @@
   <head>
     <title>{{.app_name}} - {{.title}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    {{stylesheet_link_tag "app"}}
+    <link type="text/css" rel="stylesheet" href="/assets/stylesheets/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/assets/stylesheets/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/assets/stylesheets/highlight.css">
+    <link type="text/css" rel="stylesheet" href="/assets/stylesheets/app.css">
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <meta name="csrf-token" content="{{ .csrf_token }}" />
     <meta name="csrf-param" content="csrf_token" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    {{javascript_include_tag "app"}}
-		{{setting "custom_head_html"}}
+    <script src="/assets/javascripts/jquery-2.1.3.min.js"></script>
+    <script src="/assets/javascripts/jquery-ujs.js"></script>
+    <script src="/assets/javascripts/jquery.turbolinks.min.js"></script>
+    <script src="/assets/javascripts/notifier.js"></script>
+    <script src="/assets/javascripts/pager.js"></script>
+    <script src="/assets/javascripts/turbolinks.js"></script>
+    <script src="/assets/javascripts/underscore.js"></script>
+    <script src="/assets/javascripts/backbone.js"></script>
+    <script src="/assets/javascripts/bootstrap.min.js"></script>
+    <script src="/assets/javascripts/highlight.min.js"></script>
+    <script src="/assets/javascripts/app.js"></script>
   </head>
   <body>
   <div class="header">

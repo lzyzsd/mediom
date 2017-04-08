@@ -1,11 +1,11 @@
 package app
 
 import (
-	"github.com/cbonello/revel-csrf"
-	"github.com/huacnlee/mediom/app/models"
-	"github.com/huacnlee/train"
-	"github.com/revel/revel"
 	"strings"
+
+	"github.com/huacnlee/train"
+	"github.com/lzyzsd/mediom/app/models"
+	"github.com/revel/revel"
 )
 
 func init() {
@@ -18,7 +18,6 @@ func init() {
 		revel.ParamsFilter,            // Parse parameters into Controller.Params.
 		revel.SessionFilter,           // Restore and write the session cookie.
 		revel.FlashFilter,             // Restore and write the flash cookie.
-		csrf.CSRFFilter,               // CSRF
 		revel.ValidationFilter,        // Restore kept validation errors and save new ones from cookie.
 		revel.I18nFilter,              // Resolve the requested language
 		revel.InterceptorFilter,       // Run interceptors around the action.
@@ -26,25 +25,25 @@ func init() {
 		revel.ActionInvoker,           // Invoke the action.
 	}
 
-	train.Config.AssetsPath = "app/assets"
-	if !revel.DevMode {
-		train.Config.AssetsPath = "src/github.com/huacnlee/mediom/app/assets"
-	}
-	train.Config.SASS.DebugInfo = false
-	train.Config.SASS.LineNumbers = false
-	train.Config.Verbose = false
-	train.Config.BundleAssets = true
+	// train.Config.AssetsPath = "app/assets"
+	// if !revel.DevMode {
+	// 	train.Config.AssetsPath = "src/github.com/lzyzsd/mediom/app/assets"
+	// }
+	// train.Config.SASS.DebugInfo = false
+	// train.Config.SASS.LineNumbers = false
+	// train.Config.Verbose = false
+	// train.Config.BundleAssets = true
 
-	csrf.ExemptedGlob("/msg")
+	// csrf.ExemptedGlob("/msg")
 
 	revel.OnAppStart(func() {
 		models.InitDatabase()
 		initAdmin()
 
-		if revel.DevMode {
-			train.ConfigureHttpHandler(nil)
-			revel.Filters = append([]revel.Filter{AssetsFilter}, revel.Filters...)
-		}
+		// if revel.DevMode {
+		// 	train.ConfigureHttpHandler(nil)
+		// 	revel.Filters = append([]revel.Filter{AssetsFilter}, revel.Filters...)
+		// }
 	})
 
 	revel.TemplateFuncs["javascript_include_tag"] = train.JavascriptTag
